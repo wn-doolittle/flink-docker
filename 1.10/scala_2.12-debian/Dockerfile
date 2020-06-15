@@ -16,12 +16,12 @@
 # limitations under the License.
 ###############################################################################
 
-FROM openjdk:8-jre
+FROM adoptopenjdk:13-jre-hotspot
 
 # Install dependencies
 RUN set -ex; \
   apt-get update; \
-  apt-get -y install libsnappy1v5 gettext-base; \
+  apt-get -y install libsnappy1v5 gettext-base gnupg wget; \
   rm -rf /var/lib/apt/lists/*
 
 # Grab gosu for easy step-down from root

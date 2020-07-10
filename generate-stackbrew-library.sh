@@ -9,7 +9,7 @@
 set -eu
 
 declare -A aliases=(
-    [1.10]='latest'
+    [1.11]='latest'
 )
 
 self="$(basename "$BASH_SOURCE")"
@@ -94,7 +94,7 @@ for scala_version in "${scala_versions[@]}"; do
     commit="$(dirCommit "$dir")"
 
     # Extract the full Flink version from the Dockerfile
-    flink_version="$(git show "$commit":"$dir/Dockerfile" | awk '/ENV FLINK_VERSION=(.*) /{ split($2,a,"="); print a[2]}')"
+    flink_version="$(git show "$commit":"$dir/Dockerfile" | grep 'dist/flink/flink-[0-9.]*' | cut -d/ -f6 | cut -d- -f2)"
 
     full_version=$flink_version-scala_$scala_version
 

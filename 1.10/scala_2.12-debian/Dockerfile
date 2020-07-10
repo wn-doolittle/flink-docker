@@ -16,7 +16,7 @@
 # limitations under the License.
 ###############################################################################
 
-FROM adoptopenjdk:13-jre-hotspot
+FROM adoptopenjdk:13-jdk-hotspot
 
 # Install dependencies
 RUN set -ex; \
